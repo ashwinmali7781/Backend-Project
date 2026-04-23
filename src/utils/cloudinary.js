@@ -7,6 +7,15 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+cloudinary.v2.uploader
+  .upload("dog.mp4", {
+    resource_type: "video",
+    public_id: "my_dog",
+    overwrite: true,
+    notification_url: "https://mysite.example.com/notify_endpoint",
+  })
+  .then((result) => console.log(result));
+
 const uploadOnCloudinary = async (localFilePath) => {
   try {
     if (!localFilePath) return null;
@@ -16,15 +25,7 @@ const uploadOnCloudinary = async (localFilePath) => {
     console.log("File is uploaded on Cloudinary!", response.url);
     return response;
   } catch (error) {
-    fs.unlikeSync(localFilePath)
+    fs.unlikeSync(localFilePath);
+    return null;
   }
 };
-
-cloudinary.v2.uploader
-  .upload("dog.mp4", {
-    resource_type: "video",
-    public_id: "my_dog",
-    overwrite: true,
-    notification_url: "https://mysite.example.com/notify_endpoint",
-  })
-  .then((result) => console.log(result));
