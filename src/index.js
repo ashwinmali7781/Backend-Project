@@ -17,8 +17,7 @@ connectDB()
     console.loh("MONGO db connection failed !!! ", err);
   });
 
-
-
+  
 /*
 import express from "express";
 const app = express()(async () => {
