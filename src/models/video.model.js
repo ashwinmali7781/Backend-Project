@@ -12,11 +12,11 @@ const videoSchema = new Schema(
       required: true,
     },
     title: {
-      type: String, 
+      type: String,
       required: true,
     },
     description: {
-      type: String, 
+      type: String,
       required: true,
     },
     duration: {
@@ -24,11 +24,11 @@ const videoSchema = new Schema(
       required: true,
     },
     views: {
-      type: Number, 
+      type: Number,
       default: 0,
     },
     isPublihsed: {
-      type: Boolean, 
+      type: Boolean,
       default: true,
     },
     owner: {
@@ -41,6 +41,5 @@ const videoSchema = new Schema(
   }
 );
 
-
-videoSchema.plugin(mongooseAggregatePaginate)
+videoSchema.plugin(mongooseAggregatePaginate);
 export const Video = mongoose.model("Video", videoSchema);
